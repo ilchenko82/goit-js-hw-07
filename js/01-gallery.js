@@ -25,27 +25,17 @@ galItem.addEventListener('click', imageClick)
 
 
 function imageClick(evt){
-	stopDefaultAction(evt);
+	evt.preventDefault();
+	if(evt.target.nodeName !== "IMG") {return;}
+	document.addEventListener('keydown', onEscDown,)
+	basicLightbox.create(`<img width="800" height="600" src="${evt.target.dataset.source}">`).show()
+	};
 
-	if(evt.target.nodeName !== "IMG") {
-		return
-	}
-
-const newSample = basicLightbox.create(`
-			<img width="800" height="600" src="${evt.target.dataset.source}">
-		`);
-		newSample.show();
-	
-		galItem.addEventListener('keydown', (evt)=> 
-		{ if (evt.code === "Escape") {
-		newSample.close()
+	function onEscDown(evt) {
+		if (evt.code === "Escape") {
+		const newSample = document.querySelector('div.basicLightbox')
+		newSample.remove();
+		document.removeEventListener('keydown', onEscDown)
 			}
 		}
-		)}
-	
-		function stopDefaultAction(evt) {
-			evt.preventDefault();
-		};
-
-
-
+		

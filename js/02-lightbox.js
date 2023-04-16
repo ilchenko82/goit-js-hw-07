@@ -21,28 +21,13 @@ function createGallery(items) {
 }
 const addMarkup = createGallery(galleryItems)
 galItem.innerHTML = addMarkup;
+galItem.addEventListener('click', imageClick)
 
 function imageClick(evt){
-	stopDefaultAction(evt);
-
-	if(evt.target.nodeName !== "IMG") {
-		return
-	}
-
-const newSample = basicLightbox.create(`
-			<img width="800" height="600" src="${evt.target.dataset.source}">
-		`);
-		newSample.show();
-	
-		galItem.addEventListener('keydown', (evt)=> 
-		{ if (evt.code === "Escape") {
-		newSample.close()
-			}
-		}
-		)}
-	
-		function stopDefaultAction(evt) {
-			evt.preventDefault();
-		};
+	evt.preventDefault();
+	if(evt.target.nodeName !== "IMG") {return;}
+	document.addEventListener('keydown', onEscDown,)
+	basicLightbox.create(`<img width="800" height="600" src="${evt.target.dataset.source}">`).show()
+	};
 
 		let lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: 'alt'  });
