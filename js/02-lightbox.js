@@ -26,7 +26,6 @@ galItem.addEventListener('click', imageClick)
 function imageClick(evt){
 	evt.preventDefault();
 	if(evt.target.nodeName !== "IMG") {return;}
-	document.addEventListener('keydown', onEscDown,)
 	basicLightbox.create(`<img width="800" height="600" src="${evt.target.dataset.source}">`).show()
 	};
 
