@@ -21,12 +21,5 @@ function createGallery(items) {
 }
 const addMarkup = createGallery(galleryItems)
 galItem.innerHTML = addMarkup;
-galItem.addEventListener('click', imageClick)
-
-function imageClick(evt){
-	evt.preventDefault();
-	if(evt.target.nodeName !== "IMG") {return;}
-	basicLightbox.create(`<img width="800" height="600" src="${evt.target.dataset.source}">`).show()
-	};
 
 		let lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250, captionsData: 'alt'  });
